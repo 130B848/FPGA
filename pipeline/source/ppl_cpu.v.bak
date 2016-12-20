@@ -1,0 +1,68 @@
+module ppl_cpu (clk, reset,
+                keys,
+                display_0, display_1, display_2, display_3, display_4, display_5);
+    input           clk, reset;
+    input   [9:0]   keys;
+
+    output  [6:0]   display_0, display_1, display_2, display_3, display_4, display_5;
+
+    wire    [4:0]   dReg, exReg0, exReg, mReg, wReg;
+    wire    [31:0]  pc, exAlu, mAlu, wAlu;
+
+    wire            pcContinue;
+    wire    [31:0]  pc_rf_to_if, pc_if_to_rf;
+    ppl_regF regF (clk, reset,
+                pc_if_to_rf, pcContinue,
+                pc_rf_to_if);
+
+    wire    [1:0]   pcSrc;
+    wire    [31:0]  branchAddr, jrAddr, jalAddr, pc4_if_to_rd, inst_if_to_rd;
+    ppl_fetch iFetch (clk,
+                pcSrc, pc_rf_to_if, branchAddr, jrAddr, jalAddr,
+                pc4_if_to_rd, pc_if_to_rf, inst_if_to_rd);
+
+    wire    [31:0]  pc4_rd_to_id, inst_rd_to_id;
+    ppl_regD regD (clk, reset, pcContinue,
+                pc4_if_to_rd, inst_if_to_rd,
+                pc4_rd_to_id, inst_rd_to_id);
+
+    wire            mMem2Reg, mWriteReg, mWriteReg, exMem2Reg, exWriteReg,
+                    dWriteReg, dMem2Reg, dWriteMem, dJal, dAluC, dAluImm, dShift,
+    wire    [31:0]  mMemOut, wDataImm,
+                    dpc4, dDataA, dDataB, dDataImm;
+    ppl_decode iDecode (clk, reset,
+                mReg, mMem2Reg, mWriteReg, exReg, exMem2Reg, exWriteReg, // control unit input
+                pc4_rd_to_id, inst_rd_to_id,  // input from regD
+                exAlu, mAlu, mMemOut, wReg, wWriteReg, wDataImm, // forward input
+                branchAddr, jrAddr, jalAddr,    // out to fetch stage, dataA is equal to jrAddr
+                pcSrc, pcContinue, // out from control unit to fetch stage
+                dWriteReg, dMem2Reg, dWriteMem, dJal, dAluC, dAluImm, dShift, // out from control unit to regE
+                dpc4, dDataA, dDataB, dDataImm, dReg); //out to regE
+
+    wire            exWriteReg, exMem2Reg, exWriteMem, exJal, exAluC, exAluImm, exShift;
+    wire    [31:0]  expc4, exDataA, exDataB, exDataImm;
+    ppl_regE regE (clk, reset,
+                dWriteReg, dMem2Reg, dWriteMem, dJal, dAluC, dAluImm, dShift,
+                dpc4, dDataA, dDataB, dDataImm, dReg,
+                exWriteReg, exMem2Reg, exWriteMem, exJal, exAluC, exAluImm, exShift,
+                expc4, exDataA, exDataB, exDataImm, exReg0);
+
+    ppl_execute iExecute (exJal, exAluC, exAluImm, exShift,
+                expc4, exDataA, exDataB, exDataImm, exReg0,
+                exAlu, exReg);
+
+    wire            mWriteReg, mMem2Reg, mWriteMem;
+    wire    [31:0]  mDataB;
+    ppl_regM regM (clk, reset,
+                exWriteReg, exMem2Reg, exWriteMem, exAlu, exReg, exDataB,
+                mWriteReg, mMem2Reg, mWriteMem, mAlu, mReg, mDataB);
+
+    wire    [31:0]  ioOut;
+    ppl_memory iMemory (clk,
+                mWriteMem, mAlu, mDataB, ioOut
+                mMemOut);
+
+    ppl_regW regW (clk, reset,
+                mWriteReg, mMem2Reg, mAlu, mMemOut, mReg,
+                wWriteReg, wDataImm, wReg);
+endmodule // ppl_cpu

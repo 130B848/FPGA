@@ -1,0 +1,88 @@
+module ppl_cu (op, func, rs, rt, // input before cu
+            rsrtequ, mReg, mMem2Reg, mWriteReg, exReg, exMem2Reg, exWriteReg, // input after cu
+            wreg, m2reg, wmem, jal, aluc, aluimm, shift, // output to regE
+            regrt, sext, fwdA, fwdB, // output to decode stage
+            pcSrc, pcContinue); // output to fetch stage
+    input   [5:0]   op, func;
+    input           mMem2Reg, mWriteReg, exMem2Reg, exWriteReg, rsrtequ;
+    input   [4:0]   rs, rt, mReg, exReg;
+
+    output          wreg, regrt, jal, m2reg, shift, aluimm, sext, wmem, pcContinue;
+    reg             pcContinue;
+    output  [3:0]   aluc;
+    output  [1:0]   pcSrc, fwdA, fwdB;
+    reg     [1:0]   fwdA, fwdB;
+
+    wire r_type = ~|op;
+    wire i_add = r_type &  func[5] & ~func[4] & ~func[3] & ~func[2] & ~func[1] & ~func[0]; //100000
+    wire i_sub = r_type &  func[5] & ~func[4] & ~func[3] & ~func[2] &  func[1] & ~func[0]; //100010
+
+    wire i_and = r_type &  func[5] & ~func[4] & ~func[3] &  func[2] & ~func[1] & ~func[0]; //100100
+    wire i_or  = r_type &  func[5] & ~func[4] & ~func[3] &  func[2] & ~func[1] &  func[0]; //100101
+
+    wire i_xor = r_type &  func[5] & ~func[4] & ~func[3] &  func[2] &  func[1] & ~func[0]; //100110
+    wire i_sll = r_type & ~func[5] & ~func[4] & ~func[3] & ~func[2] & ~func[1] & ~func[0]; //000000
+    wire i_srl = r_type & ~func[5] & ~func[4] & ~func[3] & ~func[2] &  func[1] & ~func[0]; //000010
+    wire i_sra = r_type & ~func[5] & ~func[4] & ~func[3] & ~func[2] &  func[1] &  func[0]; //000011
+    wire i_jr  = r_type & ~func[5] & ~func[4] &  func[3] & ~func[2] & ~func[1] & ~func[0]; //001000
+
+    wire i_addi = ~op[5] & ~op[4] &  op[3] & ~op[2] & ~op[1] & ~op[0]; //001000
+    wire i_andi = ~op[5] & ~op[4] &  op[3] &  op[2] & ~op[1] & ~op[0]; //001100
+
+    wire i_ori  = ~op[5] & ~op[4] &  op[3] &  op[2] & ~op[1] &  op[0]; //001101
+    wire i_xori = ~op[5] & ~op[4] &  op[3] &  op[2] &  op[1] & ~op[0]; //001110
+    wire i_lw   =  op[5] & ~op[4] & ~op[3] & ~op[2] &  op[1] &  op[0]; //100011
+    wire i_sw   =  op[5] & ~op[4] &  op[3] & ~op[2] &  op[1] &  op[0]; //101011
+    wire i_beq  = ~op[5] & ~op[4] & ~op[3] &  op[2] & ~op[1] & ~op[0]; //000100
+    wire i_bne  = ~op[5] & ~op[4] & ~op[3] &  op[2] & ~op[1] &  op[0]; //000101
+    wire i_lui  = ~op[5] & ~op[4] &  op[3] &  op[2] &  op[1] &  op[0]; //001111
+    wire i_j    = ~op[5] & ~op[4] & ~op[3] & ~op[2] &  op[1] & ~op[0]; //000010
+    wire i_jal  = ~op[5] & ~op[4] & ~op[3] & ~op[2] &  op[1] &  op[0]; //000011
+
+
+    assign pcSrc[1] = i_jr | i_j | i_jal;
+    assign pcSrc[0] = (i_beq & rsrtequ) | (i_bne & ~rsrtequ) | i_j | i_jal;
+
+    assign wreg = (i_add | i_sub | i_and | i_or   | i_xor  |
+                   i_sll | i_srl | i_sra | i_addi | i_andi |
+                   i_ori | i_xori | i_lw | i_lui  | i_jal) & (pcContinue);
+
+    assign aluc[3] =  i_sra;
+    assign aluc[2] =  i_sub | i_or | i_srl | i_sra | i_ori | i_bne | i_beq | i_lui;
+    assign aluc[1] =  i_xor | i_sll | i_srl | i_sra | i_xori | i_lui;
+    assign aluc[0] =  i_and | i_or | i_sll | i_srl | i_sra | i_andi | i_ori ;
+    assign shift   =  i_sll | i_srl | i_sra ;
+
+    assign aluimm  = i_addi | i_andi | i_ori | i_xori | i_lw | i_lui | i_sw;
+    assign sext    = i_addi | i_lw | i_sw | i_beq | i_bne;
+    assign wmem    = i_sw & pcContinue;
+    assign m2reg   = i_lw;
+    assign regrt   = i_addi | i_andi | i_ori | i_xori | i_lw | i_lui;
+    assign jal     = i_jal;
+
+    always @ (*) begin
+        pcContinue <= 1;
+        fwdA <= 2'b00;
+        fwdB <= 2'b00;
+
+        if ((exReg != 0) & exWriteReg & (exReg == rs) & ~exMem2Reg) begin
+            fwdA <= 2'b01;
+        end else if ((mReg != 0) & mWriteReg & (mReg == rs) & ~mMem2Reg) begin
+            fwdA <= 2'b10;
+        end else if ((mReg != 0) & mWriteReg & (mReg == rs) & mMem2Reg) begin
+            fwdA <= 2'b11;
+        end
+
+        if ((exReg != 0) & exWriteReg & (exReg == rt) & ~exMem2Reg) begin
+            fwdB <= 2'b01;
+        end else if ((mReg != 0) & mWriteReg & (mReg == rt) & ~mMem2Reg) begin
+            fwdB <= 2'b10;
+        end else if ((mReg != 0) & mWriteReg & (mReg == rt) & mMem2Reg) begin
+            fwdB <= 2'b11;
+        end
+
+        if ((exReg != 0) & exWriteReg & ((exReg == rs) | (exReg == rt)) & exMem2Reg) begin
+            pcContinue <= 0;
+        end
+    end
+endmodule // ppl_cu

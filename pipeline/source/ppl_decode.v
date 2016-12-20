@@ -1,0 +1,69 @@
+module ppl_decode (clk, reset, // input regfile
+                mReg, mMem2Reg, mWriteReg, exReg, exMem2Reg, exWriteReg, // control unit input
+                pc4, inst,  // input from regD
+                exAlu, mAlu, mMemOut, wReg, wWriteReg, wDataImm, // forward input
+                branchAddr, jrAddr, jalAddr,    // out to fetch stage, dataA is equal to jrAddr
+                pcSrc, pcContinue, // out from control unit to fetch stage
+                dWriteReg, dMem2Reg, dWriteMem, dJal, dAluC, dAluImm, dShift, // out from control unit to regE
+                dpc4, dataA, dataB, dataImm, dReg); //out to regE
+    input           clk, reset;
+
+    input           mMem2Reg, mWriteReg, exMem2Reg, exWriteReg;
+    input   [4:0]   mReg, exReg;
+
+    input   [31:0]  pc4, inst;
+
+    input           wWriteReg;
+    input   [4:0]   wReg;
+    input   [31:0]  exAlu, mAlu, mMemOut, wDataImm;
+
+    output  [31:0]  branchAddr, jrAddr, jalAddr;
+
+    output          pcContinue;
+    output  [1:0]   pcSrc;
+
+    output          dWriteReg, dMem2Reg, dWriteMem, dJal, dAluImm, dShift;
+    output  [3:0]   dAluC;
+
+    output  [4:0]   dReg;
+    output  [31:0]  dpc4, dataA, dataB, dataImm;
+
+    wire            rsrtequ;
+    assign rsrtequ = (dataA == dataB) ? 1'b1 : 1'b0;
+
+    wire            regrt, sext;
+    wire    [1:0]   fwdA, fwdB;
+    ppl_cu controlUnit (inst[31:26], inst[5:0], inst[25:21], inst[20:16],
+                        rsrtequ, mReg, mMem2Reg, mWriteReg, exReg, exMem2Reg, exWriteReg,
+                        dWriteReg, dMem2Reg, dWriteMem, dJal, dAluC, dAluImm, dShift,
+                        regrt, sext, fwdA, fwdB,
+                        pcSrc, pcContinue);
+
+    wire    [31:0]  d_rvalA, d_rvalB, reg1, reg2, reg3, reg4, reg5, reg6;
+    regfile rf (clk, reset,
+                inst[25:21], inst[20:16],
+                wWriteReg, wReg, wDataImm,
+                d_rvalA, d_rvalB,
+                reg1, reg2, reg3, reg4, reg5, reg6);
+    mux4x32 aluA (d_rvalA, exAlu, mAlu, mMemOut, fwdA, dataA);
+    mux4x32 aluB (d_rvalB, exAlu, mAlu, mMemOut, fwdB, dataB);
+
+    assign dpc4 = pc4;
+
+    // Warning: shift number is set in shiftAmount, not register
+    wire            ext;
+    assign ext = sext & inst[15];   // I-type, only if the most significant bit is 1
+    wire    [31:0]  imm, shiftAmount;
+    assign imm = { {16{ ext }}, inst[15:0] };
+    assign shiftAmount = { 27'b0, inst[10:6] };
+    mux2x32 getdImm (imm, shiftAmount, dShift, dataImm);
+
+    wire    [31:0]  offset;
+    assign offset = { {14{ ext }}, inst[15:0], 2'b0 };
+    assign branchAddr = pc4 + offset;
+    assign jrAddr = dataA;
+    assign jalAddr = { pc4[31:28], inst[25:0], 2'b0 }; // J-type instruction
+
+    mux2x5 getdReg (inst[15:11], inst[20:16], regrt, dReg);
+
+endmodule // ppl_decode
