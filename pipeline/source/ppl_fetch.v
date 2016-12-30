@@ -12,11 +12,5 @@ module ppl_fetch (clk,
 
     wire            mem_clk;
     assign mem_clk = ~clk;
-    // initial begin
-    //     mem_clk = 0;
-    // end
-    // always @ (posedge clk) begin
-    //     mem_clk = ~mem_clk;
-    // end
     ppl_instmem imem(pcIn, instOut, mem_clk);
 endmodule // ppl_fetch

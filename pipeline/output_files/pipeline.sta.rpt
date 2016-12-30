@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for pipeline
-Tue Dec 20 20:13:00 2016
+Fri Dec 23 10:25:43 2016
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -1415,7 +1415,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Tue Dec 20 20:12:36 2016
+    Info: Processing started: Fri Dec 23 10:25:20 2016
 Info: Command: quartus_sta pipeline -c pipeline
 Info: qsta_default_script.tcl version: #1
 Warning (20028): Parallel compilation is not licensed and has been disabled
@@ -1508,9 +1508,9 @@ Info (332146): Worst-case minimum pulse width slack is -2.174
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 882 megabytes
-    Info: Processing ended: Tue Dec 20 20:13:00 2016
-    Info: Elapsed time: 00:00:24
+    Info: Peak virtual memory: 879 megabytes
+    Info: Processing ended: Fri Dec 23 10:25:43 2016
+    Info: Elapsed time: 00:00:23
     Info: Total CPU time (on all processors): 00:00:23
 
 

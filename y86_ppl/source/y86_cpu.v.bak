@@ -1,0 +1,172 @@
+`include "y86_cpu.v"
+
+module y86_cpu (half_mem_clk, reset,
+            switches, hex0, hex1, hex2, hex3, hex4, hex5, leds);
+    input           reset, half_mem_clk;
+    input   [9:0]   switches;
+
+    output  [6:0]   hex0, hex1, hex2, hex3, hex4, hex5;
+    output  [9:0]   leds;
+
+    // man-made clocks
+    reg             clock, mem_clk;
+    initial begin
+        mem_clk = 1;
+        clock = 1;
+    end
+    always @ (posedge half_mem_clk) begin
+        mem_clk = ~mem_clk;
+    end
+    always @ (posedge mem_clk) begin
+        clock = ~clock;
+    end
+
+    reg     [3:0]   stat;
+
+    // global
+    wire            load_use;
+    wire            DEM_ret;
+    wire            DEMg_hlt;
+    wire            DEMg_ins;
+    wire            mispredict;
+
+    wire    [31:0]  Fin_predPC;
+    wire    [31:0]  Fout_predPC;
+    wire    [3:0]   Din_stat;
+    wire    F_stall = ((load_use) || DEM_ret || DEMg_hlt || DEMg_ins);
+    y86_regF regF (
+        clock, reset,
+        F_stall,
+        Fin_predPC, Fout_predPC
+    );
+
+    wire    [3:0]   Dout_stat;
+    wire    [3:0]   Din_icode, Din_ifun, Din_rA, Din_rB;
+    wire    [3:0]   Dout_icode, Dout_ifun, Dout_rA, Dout_rB;
+    wire    [31:0]  Din_valC, Din_valP;
+    wire    [31:0]  Dout_valC, Dout_valP;
+    wire D_bubble = mispredict || (!load_use && DEM_ret) || DEMg_hlt;
+    wire D_stall = load_use || DEMg_ins;
+    y86_regD regD (
+        clock, reset,
+        D_stall, D_bubble,
+        Din_stat, Din_icode, Din_ifun, Din_rA, Din_rB, Din_valC, Din_valP,
+        Dout_stat, Dout_icode, Dout_ifun, Dout_rA, Dout_rB, Dout_valC, Dout_valP
+    );
+
+    wire    [3:0]   Ein_stat;
+    wire    [3:0]   Eout_stat;
+    wire    [3:0]   Ein_icode, Ein_ifun;
+    wire    [3:0]   Eout_icode, Eout_ifun;
+    wire    [31:0]  Ein_valC, Ein_valA, Ein_valB;
+    wire    [31:0]  Eout_valC, Eout_valA, Eout_valB;
+    wire    [3:0]   Ein_dstE, Ein_dstM, Ein_srcA, Ein_srcB;
+    wire    [3:0]   Eout_dstE, Eout_dstM, Eout_srcA, Eout_srcB;
+    wire E_bubble = mispredict || load_use || DEMg_ins;
+    wire E_stall = 0;
+    y86_regE regE (
+        clock, reset,
+        E_stall, E_bubble,
+        Ein_stat, Ein_icode, Ein_ifun, Ein_valC, Ein_valA, Ein_valB,
+        Ein_dstE, Ein_dstM, Ein_srcA, Ein_srcB,
+        Eout_stat, Eout_icode, Eout_ifun, Eout_valC, Eout_valA, Eout_valB,
+        Eout_dstE, Eout_dstM, Eout_srcA, Eout_srcB
+    );
+
+    wire    [3:0]   Min_stat;
+    wire    [3:0]   Mout_stat;
+    wire    [3:0]   Min_icode;
+    wire    [3:0]   Mout_icode;
+    wire    [31:0]  Min_valE, Min_valA;
+    wire    [31:0]  Mout_valE, Mout_valA;
+    wire    [3:0]   Min_dstE, Min_dstM;
+    wire    [3:0]   Mout_dstE, Mout_dstM;
+    wire Min_Cnd;
+    wire Mout_Cnd;
+    wire M_bubble = 0;
+    wire M_stall = 0;
+    y86_regM regM (
+        clock, reset,
+        M_stall, M_bubble,
+        Min_stat, Min_icode, Min_Cnd, Min_valE, Min_valA, Min_dstE, Min_dstM,
+        Mout_stat, Mout_icode, Mout_Cnd, Mout_valE, Mout_valA, Mout_dstE, Mout_dstM
+    );
+
+    wire    [3:0]   Win_stat;
+    wire    [3:0]   Wout_stat;
+    wire    [3:0]   Win_icode;
+    wire    [3:0]   Wout_icode;
+    wire    [31:0]  Win_valE, Win_valM;
+    wire    [31:0]  Wout_valE, Wout_valM;
+    wire    [3:0]   Win_dstE, Win_dstM;
+    wire    [3:0]   Wout_dstE, Wout_dstM;
+    wire Win_Cnd;
+    wire Wout_Cnd;
+    wire W_bubble = 0;
+    wire W_stall = 0;
+    y86_regW regW (
+        clock, reset,
+        W_stall, W_bubble,
+        Win_stat, Win_icode, Win_valE, Win_valM, Win_dstE, Win_dstM, Win_Cnd,
+        Wout_stat, Wout_icode, Wout_valE, Wout_valM, Wout_dstE, Wout_dstM, Wout_Cnd
+    );
+
+    assign load_use = (Eout_icode == `I_MRMOVL || Eout_icode == `I_POPL) &&
+        (Eout_dstM == Ein_srcA || Eout_dstM == Ein_srcB);
+    assign DEM_ret = (Dout_icode == `I_RET || Eout_icode == `I_RET || Mout_icode == `I_RET);
+    assign mispredict = (Eout_icode == `I_JXX && ~Min_Cnd);
+    assign DEMg_hlt = (Dout_stat == `S_HLT || Eout_stat == `S_HLT ||
+        Mout_stat == `S_HLT || stat == `S_HLT);
+    assign DEMg_ins = (Dout_stat == `S_INS || Eout_stat == `S_INS ||
+        Mout_stat == `S_INS || stat == `S_INS);
+
+    y86_fetch fetch (
+        half_mem_clk, mem_clk, clock, reset,
+        Fout_predPC, Mout_icode, Mout_Cnd, Mout_valA, Wout_icode, Wout_valM,
+        Fin_predPC, Din_stat, Din_icode, Din_ifun, Din_rA, Din_rB, Din_valC, Din_valP
+
+    );
+
+    y86_decode decode (
+        half_mem_clk, mem_clk, clock, reset,
+        Dout_icode, Dout_rA, Dout_rB, Dout_valP,
+        Min_dstE, Win_dstM, Mout_dstE, Wout_dstM, Wout_dstE,
+        Min_valE, Win_valM, Mout_valE, Wout_valM, Wout_valE,
+        Wout_icode, Wout_Cnd,
+        Ein_valA, Ein_valB, Ein_dstE, Ein_dstM, Ein_srcA, Ein_srcB
+    );
+
+    assign Ein_stat = Dout_stat;
+    assign Ein_icode = Dout_icode;
+    assign Ein_ifun = Dout_ifun;
+    assign Ein_valC = Dout_valC;
+    y86_execute execute (
+        reset,
+        Eout_icode, Eout_ifun, Eout_valC, Eout_valA, Eout_valB, Eout_dstE,
+        Min_Cnd, Min_dstE, Min_valE
+    );
+
+    assign Min_stat = Eout_stat;
+    assign Min_icode = Eout_icode;
+    assign Min_valA = Eout_valA;
+    assign Min_dstM = Eout_dstM;
+    y86_memory memory (
+        mem_clk, clock, reset,
+        Mout_stat, Mout_icode, Mout_valE, Mout_valA,
+        Win_stat, Win_valM,
+        switches, hex0, hex1, hex2, hex3, hex4, hex5, leds
+    );
+    assign Win_icode = Mout_icode;
+    assign Win_valE = Mout_valE;
+    assign Win_dstE = Mout_dstE;
+    assign Win_dstM = Mout_dstM;
+    assign Win_Cnd = Mout_Cnd;
+    // writeback
+    always @ (Wout_stat or reset) begin
+        if (reset == 0) begin
+            stat <= `S_OK;
+        end else if (stat == `S_OK) begin
+            stat <= Wout_stat;
+        end
+    end
+endmodule // y86_cpu

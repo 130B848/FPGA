@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="y86_ppl">
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Div3" CBX_FILE_NAME="lpm_divide_vcm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Mod2" CBX_FILE_NAME="lpm_divide_l3m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_ibm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Div2" CBX_FILE_NAME="lpm_divide_lbm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Mod1" CBX_FILE_NAME="lpm_divide_l3m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Mod3" CBX_FILE_NAME="lpm_divide_l3m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|y86_ram:dram|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_hnp1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_fetch:fetch|y86_instmem:instruction_memory|y86_rom:irom|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_5na2.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Div1" CBX_FILE_NAME="lpm_divide_ibm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_l3m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|y86_cpu|y86_memory:memory|y86_datamem:data_memory|lpm_divide:Mod4" CBX_FILE_NAME="lpm_divide_l3m.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

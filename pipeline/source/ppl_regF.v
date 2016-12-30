@@ -4,6 +4,8 @@ module ppl_regF (clk, reset, pcIn, pcContinue, pcOut);
 
     output  [31:0]  pcOut;
     reg     [31:0]  pcOut;
+	 
+	 wire a = (1 == 1 ? 3 : 4);
 
     always @ (posedge clk or negedge reset) begin
         if (reset == 0) begin

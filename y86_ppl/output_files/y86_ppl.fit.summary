@@ -1,0 +1,19 @@
+Fitter Status : Successful - Fri Dec 30 12:40:41 2016
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Revision Name : y86_ppl
+Top-level Entity Name : y86_cpu
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Preliminary
+Logic utilization (in ALMs) : 2,428 / 32,070 ( 8 % )
+Total registers : 757
+Total pins : 64 / 457 ( 14 % )
+Total virtual pins : 0
+Total block memory bits : 49,152 / 4,065,280 ( 1 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI TX Channels : 0
+Total PLLs : 0 / 6 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

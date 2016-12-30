@@ -1,0 +1,421 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'mem_clk'
+Slack : -54.541
+TNS   : -4461.784
+
+Type  : Slow 1100mV 85C Model Setup 'clock'
+Slack : -51.735
+TNS   : -7512.507
+
+Type  : Slow 1100mV 85C Model Setup 'half_mem_clk'
+Slack : -10.720
+TNS   : -488.112
+
+Type  : Slow 1100mV 85C Model Setup 'y86_regE:regE|Eout_icode[0]'
+Slack : -10.253
+TNS   : -29.964
+
+Type  : Slow 1100mV 85C Model Setup 'reset'
+Slack : -8.801
+TNS   : -238.981
+
+Type  : Slow 1100mV 85C Model Setup 'stat[0]'
+Slack : -5.435
+TNS   : -5.435
+
+Type  : Slow 1100mV 85C Model Hold 'clock'
+Slack : -5.999
+TNS   : -995.869
+
+Type  : Slow 1100mV 85C Model Hold 'half_mem_clk'
+Slack : -4.577
+TNS   : -214.368
+
+Type  : Slow 1100mV 85C Model Hold 'reset'
+Slack : -1.138
+TNS   : -21.835
+
+Type  : Slow 1100mV 85C Model Hold 'mem_clk'
+Slack : -0.924
+TNS   : -40.616
+
+Type  : Slow 1100mV 85C Model Hold 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.872
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'stat[0]'
+Slack : 2.581
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'mem_clk'
+Slack : -5.680
+TNS   : -265.323
+
+Type  : Slow 1100mV 85C Model Recovery 'clock'
+Slack : -4.887
+TNS   : -2184.111
+
+Type  : Slow 1100mV 85C Model Recovery 'stat[0]'
+Slack : -4.137
+TNS   : -4.137
+
+Type  : Slow 1100mV 85C Model Recovery 'y86_regE:regE|Eout_icode[0]'
+Slack : -2.262
+TNS   : -6.395
+
+Type  : Slow 1100mV 85C Model Removal 'clock'
+Slack : -1.286
+TNS   : -45.404
+
+Type  : Slow 1100mV 85C Model Removal 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.817
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'mem_clk'
+Slack : 2.051
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'stat[0]'
+Slack : 2.393
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock'
+Slack : -2.174
+TNS   : -1485.294
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'mem_clk'
+Slack : -2.174
+TNS   : -1051.925
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'half_mem_clk'
+Slack : -0.561
+TNS   : -42.166
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'reset'
+Slack : -0.312
+TNS   : -7.645
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.156
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'stat[0]'
+Slack : 0.388
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'mem_clk'
+Slack : -57.221
+TNS   : -4578.182
+
+Type  : Slow 1100mV 0C Model Setup 'clock'
+Slack : -54.395
+TNS   : -7588.429
+
+Type  : Slow 1100mV 0C Model Setup 'half_mem_clk'
+Slack : -10.795
+TNS   : -491.482
+
+Type  : Slow 1100mV 0C Model Setup 'y86_regE:regE|Eout_icode[0]'
+Slack : -10.329
+TNS   : -30.134
+
+Type  : Slow 1100mV 0C Model Setup 'reset'
+Slack : -8.907
+TNS   : -241.713
+
+Type  : Slow 1100mV 0C Model Setup 'stat[0]'
+Slack : -5.375
+TNS   : -5.375
+
+Type  : Slow 1100mV 0C Model Hold 'clock'
+Slack : -5.904
+TNS   : -982.083
+
+Type  : Slow 1100mV 0C Model Hold 'half_mem_clk'
+Slack : -4.489
+TNS   : -209.933
+
+Type  : Slow 1100mV 0C Model Hold 'reset'
+Slack : -1.029
+TNS   : -20.285
+
+Type  : Slow 1100mV 0C Model Hold 'mem_clk'
+Slack : -0.922
+TNS   : -39.399
+
+Type  : Slow 1100mV 0C Model Hold 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.831
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'stat[0]'
+Slack : 2.554
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'mem_clk'
+Slack : -5.748
+TNS   : -270.213
+
+Type  : Slow 1100mV 0C Model Recovery 'clock'
+Slack : -4.833
+TNS   : -2167.027
+
+Type  : Slow 1100mV 0C Model Recovery 'stat[0]'
+Slack : -4.087
+TNS   : -4.087
+
+Type  : Slow 1100mV 0C Model Recovery 'y86_regE:regE|Eout_icode[0]'
+Slack : -2.263
+TNS   : -6.331
+
+Type  : Slow 1100mV 0C Model Removal 'clock'
+Slack : -1.091
+TNS   : -37.164
+
+Type  : Slow 1100mV 0C Model Removal 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.724
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'mem_clk'
+Slack : 2.232
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'stat[0]'
+Slack : 2.260
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock'
+Slack : -2.174
+TNS   : -1513.636
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'mem_clk'
+Slack : -2.174
+TNS   : -1051.833
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'half_mem_clk'
+Slack : -0.595
+TNS   : -43.285
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'reset'
+Slack : -0.273
+TNS   : -7.611
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.170
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'stat[0]'
+Slack : 0.332
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'mem_clk'
+Slack : -28.856
+TNS   : -2491.735
+
+Type  : Fast 1100mV 85C Model Setup 'clock'
+Slack : -27.610
+TNS   : -4396.571
+
+Type  : Fast 1100mV 85C Model Setup 'half_mem_clk'
+Slack : -5.680
+TNS   : -256.892
+
+Type  : Fast 1100mV 85C Model Setup 'y86_regE:regE|Eout_icode[0]'
+Slack : -5.492
+TNS   : -16.163
+
+Type  : Fast 1100mV 85C Model Setup 'reset'
+Slack : -4.705
+TNS   : -118.056
+
+Type  : Fast 1100mV 85C Model Setup 'stat[0]'
+Slack : -2.784
+TNS   : -2.784
+
+Type  : Fast 1100mV 85C Model Hold 'clock'
+Slack : -3.470
+TNS   : -515.838
+
+Type  : Fast 1100mV 85C Model Hold 'half_mem_clk'
+Slack : -3.110
+TNS   : -146.101
+
+Type  : Fast 1100mV 85C Model Hold 'reset'
+Slack : -1.012
+TNS   : -24.275
+
+Type  : Fast 1100mV 85C Model Hold 'mem_clk'
+Slack : -0.702
+TNS   : -24.696
+
+Type  : Fast 1100mV 85C Model Hold 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.469
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'stat[0]'
+Slack : 1.682
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'mem_clk'
+Slack : -2.920
+TNS   : -132.478
+
+Type  : Fast 1100mV 85C Model Recovery 'clock'
+Slack : -2.578
+TNS   : -1115.414
+
+Type  : Fast 1100mV 85C Model Recovery 'stat[0]'
+Slack : -2.432
+TNS   : -2.432
+
+Type  : Fast 1100mV 85C Model Recovery 'y86_regE:regE|Eout_icode[0]'
+Slack : -1.109
+TNS   : -3.116
+
+Type  : Fast 1100mV 85C Model Removal 'clock'
+Slack : -0.817
+TNS   : -30.317
+
+Type  : Fast 1100mV 85C Model Removal 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.645
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'mem_clk'
+Slack : 1.285
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'stat[0]'
+Slack : 1.335
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'mem_clk'
+Slack : -2.174
+TNS   : -993.049
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock'
+Slack : -2.174
+TNS   : -992.006
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'half_mem_clk'
+Slack : -0.546
+TNS   : -28.649
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'reset'
+Slack : -0.378
+TNS   : -17.191
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.203
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'stat[0]'
+Slack : 0.454
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'mem_clk'
+Slack : -27.636
+TNS   : -2375.442
+
+Type  : Fast 1100mV 0C Model Setup 'clock'
+Slack : -26.336
+TNS   : -4045.860
+
+Type  : Fast 1100mV 0C Model Setup 'half_mem_clk'
+Slack : -5.363
+TNS   : -244.616
+
+Type  : Fast 1100mV 0C Model Setup 'y86_regE:regE|Eout_icode[0]'
+Slack : -5.171
+TNS   : -15.249
+
+Type  : Fast 1100mV 0C Model Setup 'reset'
+Slack : -4.358
+TNS   : -109.902
+
+Type  : Fast 1100mV 0C Model Setup 'stat[0]'
+Slack : -2.695
+TNS   : -2.695
+
+Type  : Fast 1100mV 0C Model Hold 'clock'
+Slack : -3.376
+TNS   : -537.501
+
+Type  : Fast 1100mV 0C Model Hold 'half_mem_clk'
+Slack : -2.992
+TNS   : -140.653
+
+Type  : Fast 1100mV 0C Model Hold 'reset'
+Slack : -0.998
+TNS   : -24.674
+
+Type  : Fast 1100mV 0C Model Hold 'mem_clk'
+Slack : -0.558
+TNS   : -22.361
+
+Type  : Fast 1100mV 0C Model Hold 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.457
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'stat[0]'
+Slack : 1.640
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'mem_clk'
+Slack : -2.980
+TNS   : -136.872
+
+Type  : Fast 1100mV 0C Model Recovery 'clock'
+Slack : -2.575
+TNS   : -1101.183
+
+Type  : Fast 1100mV 0C Model Recovery 'stat[0]'
+Slack : -2.316
+TNS   : -2.316
+
+Type  : Fast 1100mV 0C Model Recovery 'y86_regE:regE|Eout_icode[0]'
+Slack : -1.068
+TNS   : -2.991
+
+Type  : Fast 1100mV 0C Model Removal 'clock'
+Slack : -0.741
+TNS   : -28.030
+
+Type  : Fast 1100mV 0C Model Removal 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.669
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'stat[0]'
+Slack : 1.251
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'mem_clk'
+Slack : 1.428
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'mem_clk'
+Slack : -2.174
+TNS   : -992.390
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock'
+Slack : -2.174
+TNS   : -991.031
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'half_mem_clk'
+Slack : -0.547
+TNS   : -29.335
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'reset'
+Slack : -0.339
+TNS   : -16.114
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'y86_regE:regE|Eout_icode[0]'
+Slack : 0.249
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'stat[0]'
+Slack : 0.436
+TNS   : 0.000
+
+------------------------------------------------------------

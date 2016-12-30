@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pipeline
-Tue Dec 20 20:10:25 2016
+Fri Dec 23 10:23:26 2016
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -60,7 +60,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Dec 20 20:10:25 2016      ;
+; Analysis & Synthesis Status     ; Successful - Fri Dec 23 10:23:26 2016      ;
 ; Quartus II 64-Bit Version       ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                   ; pipeline                                   ;
 ; Top-level Entity Name           ; ppl_cpu                                    ;
@@ -183,27 +183,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                         ; Library ;
 +----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
-; source/lpm_rom_irom.v            ; yes             ; User Wizard-Generated File             ; E:/altera/pipeline/source/lpm_rom_irom.v                             ;         ;
-; source/lpm_ram_dq_dram.v         ; yes             ; User Wizard-Generated File             ; E:/altera/pipeline/source/lpm_ram_dq_dram.v                          ;         ;
-; source/regfile.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/regfile.v                                  ;         ;
-; source/ppl_regW.v                ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_regW.v                                 ;         ;
-; source/ppl_regM.v                ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_regM.v                                 ;         ;
-; source/ppl_regF.v                ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_regF.v                                 ;         ;
-; source/ppl_regE.v                ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_regE.v                                 ;         ;
-; source/ppl_regD.v                ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_regD.v                                 ;         ;
-; source/ppl_memory.v              ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_memory.v                               ;         ;
-; source/ppl_io.v                  ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_io.v                                   ;         ;
-; source/ppl_instmem.v             ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_instmem.v                              ;         ;
-; source/ppl_fetch.v               ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_fetch.v                                ;         ;
-; source/ppl_execute.v             ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_execute.v                              ;         ;
-; source/ppl_decode.v              ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_decode.v                               ;         ;
-; source/ppl_datamem.v             ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_datamem.v                              ;         ;
-; source/ppl_cu.v                  ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_cu.v                                   ;         ;
-; source/ppl_cpu.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/ppl_cpu.v                                  ;         ;
-; source/mux4x32.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/mux4x32.v                                  ;         ;
-; source/mux2x32.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/mux2x32.v                                  ;         ;
-; source/mux2x5.v                  ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/mux2x5.v                                   ;         ;
-; source/alu.v                     ; yes             ; User Verilog HDL File                  ; E:/altera/pipeline/source/alu.v                                      ;         ;
+; source/lpm_rom_irom.v            ; yes             ; User Wizard-Generated File             ; E:/altera/FPGA/pipeline/source/lpm_rom_irom.v                        ;         ;
+; source/lpm_ram_dq_dram.v         ; yes             ; User Wizard-Generated File             ; E:/altera/FPGA/pipeline/source/lpm_ram_dq_dram.v                     ;         ;
+; source/regfile.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/regfile.v                             ;         ;
+; source/ppl_regW.v                ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_regW.v                            ;         ;
+; source/ppl_regM.v                ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_regM.v                            ;         ;
+; source/ppl_regF.v                ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_regF.v                            ;         ;
+; source/ppl_regE.v                ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_regE.v                            ;         ;
+; source/ppl_regD.v                ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_regD.v                            ;         ;
+; source/ppl_memory.v              ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_memory.v                          ;         ;
+; source/ppl_io.v                  ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_io.v                              ;         ;
+; source/ppl_instmem.v             ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_instmem.v                         ;         ;
+; source/ppl_fetch.v               ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_fetch.v                           ;         ;
+; source/ppl_execute.v             ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_execute.v                         ;         ;
+; source/ppl_decode.v              ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_decode.v                          ;         ;
+; source/ppl_datamem.v             ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_datamem.v                         ;         ;
+; source/ppl_cu.v                  ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_cu.v                              ;         ;
+; source/ppl_cpu.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/ppl_cpu.v                             ;         ;
+; source/mux4x32.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/mux4x32.v                             ;         ;
+; source/mux2x32.v                 ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/mux2x32.v                             ;         ;
+; source/mux2x5.v                  ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/mux2x5.v                              ;         ;
+; source/alu.v                     ; yes             ; User Verilog HDL File                  ; E:/altera/FPGA/pipeline/source/alu.v                                 ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
 ; stratix_ram_block.inc            ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
 ; lpm_mux.inc                      ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
@@ -213,17 +213,17 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; altrom.inc                       ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
 ; altram.inc                       ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/altram.inc            ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_gdi1.tdf           ; yes             ; Auto-Generated Megafunction            ; E:/altera/pipeline/db/altsyncram_gdi1.tdf                            ;         ;
-; source/simple.mif                ; yes             ; Auto-Found Memory Initialization File  ; E:/altera/pipeline/source/simple.mif                                 ;         ;
-; db/altsyncram_59m1.tdf           ; yes             ; Auto-Generated Megafunction            ; E:/altera/pipeline/db/altsyncram_59m1.tdf                            ;         ;
-; source/sc_datamem.mif            ; yes             ; Auto-Found Memory Initialization File  ; E:/altera/pipeline/source/sc_datamem.mif                             ;         ;
+; db/altsyncram_gdi1.tdf           ; yes             ; Auto-Generated Megafunction            ; E:/altera/FPGA/pipeline/db/altsyncram_gdi1.tdf                       ;         ;
+; source/simple.mif                ; yes             ; Auto-Found Memory Initialization File  ; E:/altera/FPGA/pipeline/source/simple.mif                            ;         ;
+; db/altsyncram_59m1.tdf           ; yes             ; Auto-Generated Megafunction            ; E:/altera/FPGA/pipeline/db/altsyncram_59m1.tdf                       ;         ;
+; source/sc_datamem.mif            ; yes             ; Auto-Found Memory Initialization File  ; E:/altera/FPGA/pipeline/source/sc_datamem.mif                        ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                           ; e:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
-; db/lpm_divide_l3m.tdf            ; yes             ; Auto-Generated Megafunction            ; E:/altera/pipeline/db/lpm_divide_l3m.tdf                             ;         ;
-; db/sign_div_unsign_olh.tdf       ; yes             ; Auto-Generated Megafunction            ; E:/altera/pipeline/db/sign_div_unsign_olh.tdf                        ;         ;
-; db/alt_u_div_mve.tdf             ; yes             ; Auto-Generated Megafunction            ; E:/altera/pipeline/db/alt_u_div_mve.tdf                              ;         ;
-; db/lpm_divide_ibm.tdf            ; yes             ; Auto-Generated Megafunction            ; E:/altera/pipeline/db/lpm_divide_ibm.tdf                             ;         ;
+; db/lpm_divide_l3m.tdf            ; yes             ; Auto-Generated Megafunction            ; E:/altera/FPGA/pipeline/db/lpm_divide_l3m.tdf                        ;         ;
+; db/sign_div_unsign_olh.tdf       ; yes             ; Auto-Generated Megafunction            ; E:/altera/FPGA/pipeline/db/sign_div_unsign_olh.tdf                   ;         ;
+; db/alt_u_div_mve.tdf             ; yes             ; Auto-Generated Megafunction            ; E:/altera/FPGA/pipeline/db/alt_u_div_mve.tdf                         ;         ;
+; db/lpm_divide_ibm.tdf            ; yes             ; Auto-Generated Megafunction            ; E:/altera/FPGA/pipeline/db/lpm_divide_ibm.tdf                        ;         ;
 +----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
 
 
@@ -336,14 +336,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+-------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis IP Cores Summary                                                                                                                                           ;
-+--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------+---------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                   ; IP Include File                             ;
-+--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------+---------------------------------------------+
-; Altera ; LPM_ROM      ; N/A     ; N/A          ; N/A          ; |ppl_cpu|ppl_fetch:iFetch|ppl_instmem:imem|lpm_rom_irom:irom      ; E:/altera/pipeline/source/lpm_rom_irom.v    ;
-; Altera ; LPM_RAM_DQ   ; N/A     ; N/A          ; N/A          ; |ppl_cpu|ppl_memory:iMemory|ppl_datamem:dmem|lpm_ram_dq_dram:dram ; E:/altera/pipeline/source/lpm_ram_dq_dram.v ;
-+--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------+---------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                                                                ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------+--------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                                   ; IP Include File                                  ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------+--------------------------------------------------+
+; Altera ; LPM_ROM      ; N/A     ; N/A          ; N/A          ; |ppl_cpu|ppl_fetch:iFetch|ppl_instmem:imem|lpm_rom_irom:irom      ; E:/altera/FPGA/pipeline/source/lpm_rom_irom.v    ;
+; Altera ; LPM_RAM_DQ   ; N/A     ; N/A          ; N/A          ; |ppl_cpu|ppl_memory:iMemory|ppl_datamem:dmem|lpm_ram_dq_dram:dram ; E:/altera/FPGA/pipeline/source/lpm_ram_dq_dram.v ;
++--------+--------------+---------+--------------+--------------+-------------------------------------------------------------------+--------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------+
@@ -791,7 +791,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:11     ;
+; Top            ; 00:00:08     ;
 +----------------+--------------+
 
 
@@ -801,7 +801,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Tue Dec 20 20:10:12 2016
+    Info: Processing started: Fri Dec 23 10:23:14 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline -c pipeline
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file source/lpm_rom_irom.v
@@ -979,9 +979,9 @@ Info (21057): Implemented 3919 device resources after synthesis - the final reso
     Info (21061): Implemented 3801 logic cells
     Info (21064): Implemented 64 RAM segments
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 597 megabytes
-    Info: Processing ended: Tue Dec 20 20:10:25 2016
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Peak virtual memory: 604 megabytes
+    Info: Processing ended: Fri Dec 23 10:23:26 2016
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:11
 
 
